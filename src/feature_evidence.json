@@ -1,0 +1,67 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-extract-resume-details-from-the-uploaded-screenshot-screenshot-2026-02-05-150324-png-and-update-the-site-s-content-data-model-in-frontend-src-resumedata-ts-to-match-the-resume-replacing-the-current-placeholder-person-and-entries",
+      "featureTitle": "Extract resume details from the uploaded screenshot (Screenshot 2026-02-05 150324.png) and update the site’s content data model in frontend/src/resumeData.ts to match the resume, replacing the current placeholder person and entries.",
+      "files": [
+        "frontend/src/components/sections/AboutSection.tsx",
+        "frontend/src/components/sections/ExperienceSection.tsx",
+        "frontend/src/components/sections/HeroSection.tsx",
+        "frontend/src/resumeData.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-support-for-a-phone-number-in-the-resume-data-model-and-render-it-in-the-ui-alongside-existing-contact-information",
+      "featureTitle": "Add support for a phone number in the resume data model and render it in the UI alongside existing contact information.",
+      "files": [
+        "frontend/src/components/sections/AboutSection.tsx",
+        "frontend/src/components/sections/ContactSection.tsx",
+        "frontend/src/resumeData.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-sections-gracefully-handle-missing-empty-resume-fields-that-are-not-present-in-the-uploaded-resume-e-g-projects-and-social-links-by-conditionally-hiding-empty-sections-blocks-and-avoiding-empty-layouts",
+      "featureTitle": "Ensure sections gracefully handle missing/empty resume fields that are not present in the uploaded resume (e.g., projects and social links) by conditionally hiding empty sections/blocks and avoiding empty layouts.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/TopNav.tsx",
+        "frontend/src/components/sections/ContactSection.tsx",
+        "frontend/src/components/sections/ProjectsSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

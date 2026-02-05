@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Create a professional personal resume website to showcase experience, skills, and contact information.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-responsive-professional-resume-website-with-core-sections-hero-intro-about-experience-education-skills-projects-portfolio-and-contact",
+      "title": "Create a responsive, professional resume website with core sections: Hero/Intro, About, Experience, Education, Skills, Projects/Portfolio, and Contact.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-clean-navigation-experience-a-top-navigation-bar-with-anchor-links-to-each-section-and-a-prominent-call-to-action-button-e-g-download-resume-or-contact",
+      "title": "Implement a clean navigation experience: a top navigation bar with anchor links to each section and a prominent call-to-action button (e.g., “Download Resume” or “Contact”).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-structured-data-model-on-the-frontend-typescript-objects-for-resume-content-name-headline-summary-experience-entries-education-entries-skills-project-entries-contact-links-so-the-site-can-be-updated-by-editing-a-single-file",
+      "title": "Provide a structured data model on the frontend (TypeScript objects) for resume content (name, headline, summary, experience entries, education entries, skills, project entries, contact links) so the site can be updated by editing a single file.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-contact-section-that-supports-copy-to-clipboard-for-email-and-displays-external-links-e-g-linkedin-github-with-clear-labels-do-not-require-sending-emails",
+      "title": "Add a Contact section that supports copy-to-clipboard for email and displays external links (e.g., LinkedIn, GitHub) with clear labels; do not require sending emails.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-distinctive-visual-theme-suitable-for-a-professional-resume-site-typography-spacing-color-palette-section-styling-and-enforce-it-consistently-across-all-sections-avoid-blue-purple",
+      "title": "Apply a coherent, distinctive visual theme suitable for a professional resume site (typography, spacing, color palette, section styling) and enforce it consistently across all sections (avoid blue & purple).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-static-assets-for-branding-and-identity-a-favicon-a-simple-personal-logo-monogram-and-a-hero-headshot-illustration-or-silhouette-and-render-them-in-the-ui-from-frontend-public-assets-generated",
+      "title": "Add static assets for branding and identity: a favicon, a simple personal logo/monogram, and a hero headshot illustration or silhouette, and render them in the UI from frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-extract-resume-details-from-the-uploaded-screenshot-screenshot-2026-02-05-150324-png-and-update-the-site-s-content-data-model-in-frontend-src-resumedata-ts-to-match-the-resume-replacing-the-current-placeholder-person-and-entries",
+      "title": "Extract resume details from the uploaded screenshot (Screenshot 2026-02-05 150324.png) and update the site’s content data model in frontend/src/resumeData.ts to match the resume, replacing the current placeholder person and entries.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-support-for-a-phone-number-in-the-resume-data-model-and-render-it-in-the-ui-alongside-existing-contact-information",
+      "title": "Add support for a phone number in the resume data model and render it in the UI alongside existing contact information.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-sections-gracefully-handle-missing-empty-resume-fields-that-are-not-present-in-the-uploaded-resume-e-g-projects-and-social-links-by-conditionally-hiding-empty-sections-blocks-and-avoiding-empty-layouts",
+      "title": "Ensure sections gracefully handle missing/empty resume fields that are not present in the uploaded resume (e.g., projects and social links) by conditionally hiding empty sections/blocks and avoiding empty layouts.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a professional resume website to present experience, skills, and contact information.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Populate the website content from the user’s provided resume (enter/transfer resume details into the site’s data model).",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Professional personal resume website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,18 @@
+{
+  "frontend/src/index.css": "Global styles with warm, earthy OKLCH color palette (avoiding blue/purple), custom section utilities, and smooth scroll behavior for professional resume aesthetic.",
+  "frontend/tailwind.config.js": "Extended Tailwind configuration with custom fonts (Inter, Outfit), warm color tokens, enhanced shadows, and fade-in animations for polished UI.",
+  "frontend/index.html": "HTML entry point with favicon, page title, and Google Fonts preconnect for Inter and Outfit typefaces.",
+  "frontend/src/resumeData.ts": "Centralized TypeScript data model containing Fatima Chowdhury's resume content (personal info including phone, experience at GDYT and Edible Arrangements, education at Wayne State University and Cass Technical High School, technical skills, empty projects and contact links arrays) with full type definitions including phone field.",
+  "frontend/src/App.tsx": "Main application component that renders the complete single-page resume layout with navigation and all content sections, conditionally rendering ProjectsSection only when projects array has items.",
+  "frontend/src/components/layout/TopNav.tsx": "Responsive top navigation bar with smooth scroll anchor links, mobile hamburger menu, logo, and prominent CTA button; dynamically generates navigation links based on available content (excludes Projects link when projects array is empty).",
+  "frontend/src/components/layout/Section.tsx": "Reusable section wrapper component providing consistent spacing, max-width, and optional title/subtitle layout for all page sections.",
+  "frontend/src/components/layout/Footer.tsx": "Footer component with copyright notice and caffeine.ai attribution link with heart icon.",
+  "frontend/src/components/sections/HeroSection.tsx": "Hero section featuring name, headline (conditionally rendered), summary (conditionally rendered), location badge, CTA buttons, and headshot illustration with gradient background effects; avoids empty text blocks when fields are empty.",
+  "frontend/src/components/sections/AboutSection.tsx": "About section displaying professional summary (conditionally rendered) and key personal details (location, email, phone) in a card layout with icons; phone field is conditionally rendered only when present, with proper JSX structure for both summary and no-summary cases.",
+  "frontend/src/components/sections/ExperienceSection.tsx": "Experience section mapping over work history entries with company, role, period, description (conditionally rendered when not empty), and achievement highlights; uses Tailwind v3 class 'shrink-0' instead of deprecated 'flex-shrink-0'.",
+  "frontend/src/components/sections/EducationSection.tsx": "Education section displaying academic degrees and certifications with institution, location, period, and additional details.",
+  "frontend/src/components/sections/SkillsSection.tsx": "Skills section organized by categories (Languages, Frontend, Backend, DevOps) with technology tags in a responsive grid.",
+  "frontend/src/components/sections/ProjectsSection.tsx": "Projects section showcasing portfolio items with descriptions, technology stacks, and external links in card layout; returns null when projects array is empty to prevent rendering empty section.",
+  "frontend/src/components/sections/ContactSection.tsx": "Contact section with copy-to-clipboard email functionality, phone number display (conditionally rendered when present), and social media links area (conditionally rendered when contactLinks array has items).",
+  "frontend/src/hooks/useQueries.ts": "Placeholder file for React Query hooks to interact with backend (currently empty as backend has no methods)."
+}

@@ -1,0 +1,96 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Update portfolio resume content from screenshot + conditional section rendering",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Extract resume details from the uploaded screenshot and replace placeholder content in resumeData with Fatima Chowdhury’s education, experience, and skills.",
+      "acceptanceCriteria": [
+        "frontend/src/resumeData.ts no longer contains the placeholder identity (e.g., “Alex Johnson”) and is updated to reflect the uploaded resume (Fatima Chowdhury; Detroit, MI; email chowdhuryz313@gmail.com; education, experience, and skills from the screenshot).",
+        "Education entries include Wayne State University (BS in Computer Science; University Honors Co-Major; Anticipated 2029) and Cass Technical High School (Chemical/Biological; GPA 3.9; June 2025), preserving locations shown in the resume.",
+        "Experience entries include GDYT – The Lawn Academy (Employee; Hamtramck, MI; Summers 2023, 2024 & 2025) and Edible Arrangements (Employee; Detroit, MI; May 2024), with bullet points represented as highlights.",
+        "Skills are populated with the “TECHNICAL & PROFESSIONAL SKILLS” bullets from the resume."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/resumeData.ts",
+          "operation": "modify",
+          "description": "Replace placeholder resume content with the extracted details from “Screenshot 2026-02-05 150324.png”: Fatima Chowdhury, Detroit, MI, chowdhuryz313@gmail.com; education (Wayne State University; Cass Technical High School); experience (GDYT – The Lawn Academy; Edible Arrangements) with bullet points mapped to highlights; skills populated from “TECHNICAL & PROFESSIONAL SKILLS”. Ensure projects/contactLinks reflect only what exists in the resume (likely empty arrays)."
+        },
+        {
+          "path": "frontend/src/components/sections/ExperienceSection.tsx",
+          "operation": "modify",
+          "description": "Make experience rendering tolerant of resumes that only have highlights (e.g., hide the description paragraph when exp.description is empty) to avoid empty layout blocks."
+        },
+        {
+          "path": "frontend/src/components/sections/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Ensure hero text blocks (headline and/or summary) don’t render empty placeholders/spacing when resumeData fields are empty (conditionally render only when non-empty)."
+        },
+        {
+          "path": "frontend/src/components/sections/AboutSection.tsx",
+          "operation": "modify",
+          "description": "Ensure About section summary paragraph does not render an empty block if resumeData.summary is empty (conditionally render)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Add a phone number field to the resume data model and render it alongside existing contact information.",
+      "acceptanceCriteria": [
+        "The resume data model includes a phone number field populated with “(313)-419-2063” from the resume screenshot.",
+        "The phone number is displayed in at least one appropriate existing section that presents contact details (e.g., About and/or Contact).",
+        "If the phone field is empty, the UI does not render an empty label/value row for it."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/resumeData.ts",
+          "operation": "modify",
+          "description": "Extend the ResumeData interface with a phone field and populate it with “(313)-419-2063” from the screenshot."
+        },
+        {
+          "path": "frontend/src/components/sections/AboutSection.tsx",
+          "operation": "modify",
+          "description": "Render phone alongside Location and Email in the contact info grid, with conditional rendering so no empty label/value row is shown when phone is missing."
+        },
+        {
+          "path": "frontend/src/components/sections/ContactSection.tsx",
+          "operation": "modify",
+          "description": "Display the phone number in the Contact section (e.g., as an additional contact row) with conditional rendering so nothing is shown when resumeData.phone is empty."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Conditionally hide empty sections/blocks (e.g., Projects and social links) and keep top navigation in sync so it doesn’t link to hidden sections.",
+      "acceptanceCriteria": [
+        "If resumeData.projects is empty, the Projects section does not render an empty grid on the page.",
+        "If a section is hidden due to empty content, the top navigation does not include a link to that hidden section.",
+        "If resumeData.contactLinks is empty, the Contact section does not render an empty “Connect With Me” area."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/sections/ProjectsSection.tsx",
+          "operation": "modify",
+          "description": "If resumeData.projects is empty, return null (or otherwise avoid rendering the section) so no empty grid/layout appears."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Conditionally render <ProjectsSection /> only when resumeData.projects has items, preventing an empty Projects section from being mounted."
+        },
+        {
+          "path": "frontend/src/components/layout/TopNav.tsx",
+          "operation": "modify",
+          "description": "Generate navigation links dynamically based on which sections are actually present (e.g., include Projects only when resumeData.projects has items), so the top nav never links to hidden sections."
+        },
+        {
+          "path": "frontend/src/components/sections/ContactSection.tsx",
+          "operation": "modify",
+          "description": "Conditionally render the “Connect With Me” social links area only when resumeData.contactLinks has items, avoiding an empty block when contactLinks is empty."
+        }
+      ]
+    }
+  ]
+}
