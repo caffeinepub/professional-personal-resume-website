@@ -1,73 +1,35 @@
 {
   "kind": "build_request",
-  "title": "Populate site content from uploaded resume screenshot",
+  "title": "Center Hero content like About section and restore “Hi, I’m …” greeting",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-7",
-      "text": "Extract resume details from the uploaded screenshot (Screenshot 2026-02-05 150324.png) and update the site’s content data model in frontend/src/resumeData.ts to match the resume, replacing the current placeholder person and entries.",
+      "id": "REQ-15",
+      "text": "Update the Hero/Intro section layout so its text content is centered in the middle of the page (visually centered like the “About Me” section), and ensure the Hero headline explicitly includes the greeting text “Hi, I’m …” (e.g., “Hi, I’m {resumeData.name}”) while keeping the rest of the Hero content (\"Computer Science\" line and the “Get in Touch” / “Learn More” buttons) present and centered below the headline.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-1"
         ],
         "quotes": [
-          "this is the resume i want the website to have the info of"
+          "noo i said i want it in the middle of the website and i srtill want it to say Hi, I'm  ... i want it in the middle like how the \"About Me\" is in the middle opf the website"
         ]
       },
       "acceptanceCriteria": [
-        "frontend/src/resumeData.ts no longer contains the placeholder identity (e.g., “Alex Johnson”) and is updated to reflect the uploaded resume (Fatima Chowdhury; Detroit, MI; email chowdhuryz313@gmail.com; education, experience, and skills from the screenshot).",
-        "Education entries include Wayne State University (BS in Computer Science; University Honors Co-Major; Anticipated 2029) and Cass Technical High School (Chemical/Biological; GPA 3.9; June 2025), preserving locations shown in the resume.",
-        "Experience entries include GDYT – The Lawn Academy (Employee; Hamtramck, MI; Summers 2023, 2024 & 2025) and Edible Arrangements (Employee; Detroit, MI; May 2024), with bullet points represented as highlights.",
-        "Skills are populated with the “TECHNICAL & PROFESSIONAL SKILLS” bullets from the resume."
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Add support for a phone number in the resume data model and render it in the UI alongside existing contact information.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "this is the resume i want the website to have the info of"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The resume data model includes a phone number field populated with “(313)-419-2063” from the resume screenshot.",
-        "The phone number is displayed in at least one appropriate existing section that presents contact details (e.g., About and/or Contact).",
-        "If the phone field is empty, the UI does not render an empty label/value row for it."
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Ensure sections gracefully handle missing/empty resume fields that are not present in the uploaded resume (e.g., projects and social links) by conditionally hiding empty sections/blocks and avoiding empty layouts.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "this is the resume i want the website to have the info of"
-        ]
-      },
-      "acceptanceCriteria": [
-        "If resumeData.projects is empty, the Projects section does not render an empty grid on the page.",
-        "If a section is hidden due to empty content, the top navigation does not include a link to that hidden section.",
-        "If resumeData.contactLinks is empty, the Contact section does not render an empty “Connect With Me” area."
+        "On desktop and mobile, the Hero text block is horizontally centered and visually aligned to the same centered content width style used by the “About Me” section (not left-aligned or stuck at the top).",
+        "The primary Hero headline renders the literal greeting text \"Hi, I'm\" followed by the user’s name (from resumeData), in one centered headline line (wrapping naturally on small screens if needed).",
+        "The \"Computer Science\" line remains centered and is rendered directly below the greeting headline.",
+        "The “Get in Touch” and “Learn More” buttons remain visible and centered below the \"Computer Science\" line, and still scroll to the Contact and About sections respectively."
       ]
     }
   ],
   "constraints": [
-    "Frontend files under frontend/src/components/ui must not be edited (compose them only).",
-    "Do not edit any files under frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, or frontend/src/main.tsx (immutable paths).",
-    "Backend remains a single Motoko actor; no backend changes are required for this request."
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep the backend as a single Motoko actor; no new backend services."
   ],
   "nonGoals": [
-    "Adding a contact form that sends emails.",
-    "Adding third-party authentication providers beyond Internet Identity.",
-    "Inventing new resume content (projects, social profiles, certifications) not present in the uploaded resume screenshot."
+    "Do not add new sections or change resume content fields in frontend/src/resumeData.ts as part of this request.",
+    "Do not introduce new authentication, backend methods, or persistence changes."
   ],
   "imageRequirements": {
     "required": [],

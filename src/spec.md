@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Populate the portfolio/resume site with real resume content from the uploaded screenshot and display full contact details including phone number.
+**Goal:** Center the Hero/Intro content like the “About Me” section and restore the “Hi, I’m …” greeting in the Hero headline.
 
 **Planned changes:**
-- Extract the resume details from `Screenshot 2026-02-05 150324.png` and replace all placeholder content in `frontend/src/resumeData.ts` with Fatima Chowdhury’s information (Detroit, MI; chowdhuryz313@gmail.com; education, experience, skills).
-- Add a phone number field to the resume data model and render it alongside existing contact info, while hiding it when not provided.
-- Update UI section rendering to conditionally hide empty/unused sections (e.g., Projects, social/contact links blocks) and remove their navigation links when hidden.
+- Update the Hero/Intro section layout so the text block is horizontally centered and uses the same centered content width/alignment style as the “About Me” section on desktop and mobile.
+- Adjust the Hero headline to explicitly include the greeting text `Hi, I'm {resumeData.name}` as the primary centered headline (wrapping naturally on small screens).
+- Keep the “Computer Science” line and the “Get in Touch” / “Learn More” buttons present, centered, and stacked below the greeting headline, preserving their scroll-to-section behavior.
 
-**User-visible outcome:** The site displays Fatima Chowdhury’s resume (education, experience highlights, and skills) with email and phone number shown in contact info, and no empty sections or navigation links appear for missing resume content.
+**User-visible outcome:** The homepage Hero content appears centered in the middle of the page (matching the “About Me” centered layout) and shows “Hi, I’m …” with the user’s name, with the subtitle and buttons centered beneath it.

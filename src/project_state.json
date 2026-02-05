@@ -1,10 +1,14 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
+  "projectStateVersion": 15,
   "summary": "Create a professional personal resume website to showcase experience, skills, and contact information.",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Footer still displays the text \"using caffeine.ai\" despite attempted removal; user reports the change did not take effect.",
+    "Deployment/build failed during deployment; website is not running.",
+    "Hero/Intro section layout is not centered in the middle of the page as requested (should match the centering of the \"About Me\" section), and the greeting text \"Hi, I'm ...\" is not displayed as desired."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-responsive-professional-resume-website-with-core-sections-hero-intro-about-experience-education-skills-projects-portfolio-and-contact",
@@ -77,6 +81,54 @@
         "REQ-9"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-footer-content-so-the-attribution-text-link-using-caffeine-ai-is-removed-from-the-footer-s-inner-container-element-html-1-body-1-div-1-div-1-footer-1-div-1-while-keeping-the-rest-of-the-site-unchanged",
+      "title": "Update the footer content so the attribution text/link \"using caffeine.ai\" is removed from the footer’s inner container element (/html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]) while keeping the rest of the site unchanged.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-footer-inner-container-content-the-element-at-xpath-html-1-body-1-div-1-div-1-footer-1-div-1-to-remove-the-attribution-text-link-using-caffeine-ai-while-keeping-the-rest-of-the-site-unchanged",
+      "title": "Update the footer inner container content (the element at XPath /html[1]/body[1]/div[1]/div[1]/footer[1]/div[1]) to remove the attribution text/link \"using caffeine.ai\" while keeping the rest of the site unchanged.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-footer-component-self-contained-by-removing-the-lucide-react-heart-icon-import-usage-and-replacing-it-with-simple-inline-markup-so-the-frontend-build-cannot-fail-due-to-a-missing-icon-dependency-without-adding-any-new-attribution-text",
+      "title": "Make the Footer component self-contained by removing the lucide-react Heart icon import/usage and replacing it with simple inline markup so the frontend build cannot fail due to a missing icon dependency, without adding any new attribution text.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-selected-image-element-at-xpath-html-1-body-1-div-1-div-1-main-1-section-1-div-2-div-1-div-2-div-1-img-1-the-hero-headshot-img-in-the-hero-section-so-it-is-no-longer-rendered-in-the-dom-while-leaving-all-other-hero-section-content-unchanged",
+      "title": "Remove the selected image element at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/section[1]/div[2]/div[1]/div[2]/div[1]/img[1] (the hero headshot <img> in the Hero section) so it is no longer rendered in the DOM, while leaving all other Hero section content unchanged.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-only-the-hero-section-text-content-container-at-xpath-html-1-body-1-div-1-div-1-main-1-section-1-div-2-div-1-div-1-so-the-content-is-centered-at-the-top-of-the-page-and-arranged-in-this-vertical-order-1-the-user-s-name-as-a-single-full-line-sentence-2-a-second-centered-line-that-reads-computer-science-3-the-get-in-touch-and-learn-more-buttons-directly-below-that-second-line",
+      "title": "Update only the Hero section text-content container at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/section[1]/div[2]/div[1]/div[1] so the content is centered at the top of the page and arranged in this vertical order: (1) the user’s name as a single full-line sentence, (2) a second centered line that reads \"Computer Science\", (3) the \"Get in Touch\" and \"Learn More\" buttons directly below that second line.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-hero-intro-section-layout-so-its-text-content-is-centered-in-the-middle-of-the-page-visually-centered-like-the-about-me-section-and-ensure-the-hero-headline-explicitly-includes-the-greeting-text-hi-i-m-e-g-hi-i-m-resumedata-name-while-keeping-the-rest-of-the-hero-content-computer-science-line-and-the-get-in-touch-learn-more-buttons-present-and-centered-below-the-headline",
+      "title": "Update the Hero/Intro section layout so its text content is centered in the middle of the page (visually centered like the “About Me” section), and ensure the Hero headline explicitly includes the greeting text “Hi, I’m …” (e.g., “Hi, I’m {resumeData.name}”) while keeping the rest of the Hero content (\"Computer Science\" line and the “Get in Touch” / “Learn More” buttons) present and centered below the headline.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -89,6 +141,24 @@
     {
       "id": "AR-2",
       "summary": "Populate the website content from the user’s provided resume (enter/transfer resume details into the site’s data model).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Remove the entire footer element/content from the resume website (user requested to remove \"this whole thing\" in context of footer).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Center the Hero/Intro content at the top of the page: show the user’s name on one line, “Computer Science” on the next centered line, and place the “Get in touch” and “Learn more” buttons below the headline text.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Update the Hero/Intro section so it is centered in the middle of the page like the \"About Me\" section, and ensure the greeting text \"Hi, I'm ...\" remains visible in the Hero.",
       "reqIds": [],
       "status": "pending"
     }
