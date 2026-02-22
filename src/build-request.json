@@ -1,48 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Fix draft-domain redirect so the site consistently uses fatimachowdhury.com when reachable",
-  "priority": "high",
+  "title": "Make gradient name text solid color",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-27",
-      "text": "Update the redirect logic in frontend/index.html so that opening the site on the Caffeine draft domain (e.g., https://funny-pink-4yi-draft.caffeine.xyz/) reliably redirects to https://fatimachowdhury.com/ whenever the canonical domain is reachable, even if a previous reachability check in the same browser tab/session had cached the canonical domain as unreachable.",
+      "id": "REQ-1",
+      "text": "Remove the gradient styling from the name text in HeroSection and replace it with a single solid color. The element to modify is the second span within the h1 tag (XPath: /html[1]/body[1]/div[1]/div[1]/main[1]/section[1]/div[2]/div[1]/h1[1]/span[2]). Use a warm, readable color that maintains good contrast against the background.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-5"
         ],
         "quotes": [
-          "it still says this: https://funny-pink-4yi-draft.caffeine.xyz/"
+          "I want this to be one solid color"
         ]
       },
       "acceptanceCriteria": [
-        "When visiting https://funny-pink-4yi-draft.caffeine.xyz/ and fatimachowdhury.com is reachable, the browser navigates to https://fatimachowdhury.com/ (the address bar shows fatimachowdhury.com).",
-        "A previously cached \"canonicalDomainReachable=false\" value must not prevent redirecting forever; the app must re-check reachability after a reasonable amount of time or on subsequent loads so redirect can start working once the domain becomes reachable.",
-        "If fatimachowdhury.com is not reachable/configured, the site remains accessible on the draft domain (no hard-failure redirect loop or blank page).",
-        "If the URL contains a #caffeineAdminToken=... fragment, the fragment is removed (either during redirect to fatimachowdhury.com or, when staying on the draft domain, via history replace) so it is not left in the address bar."
+        "The name text displays in a single solid color instead of a gradient",
+        "The color maintains sufficient contrast for readability",
+        "Only the selected span element is modified"
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui or any other paths listed in frontend.immutablePaths.",
-    "Keep all user-facing text in English."
+    "Only modify the styling of the second span element in the HeroSection h1 tag",
+    "Do not change the text content or structure"
   ],
   "nonGoals": [
-    "Changing resume content, section layouts, or styling unrelated to domain/redirect behavior.",
-    "Adding backend changes; this issue should be addressed in frontend/index.html redirect behavior only."
+    "Modifying other gradient text elements on the page",
+    "Changing the overall color scheme of the site"
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

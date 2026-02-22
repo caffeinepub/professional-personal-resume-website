@@ -1,22 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix draft-domain redirect caching so canonical domain redirect recovers when reachable",
+  "title": "Make gradient name text solid color",
   "requirements": [
     {
-      "id": "REQ-27",
-      "summary": "Adjust frontend/index.html draft→canonical redirect script to avoid permanently caching canonical-domain unreachability, while preserving accessibility on the draft domain and removing any #caffeineAdminToken fragment.",
+      "id": "REQ-1",
+      "summary": "Replace gradient styling on the name text in HeroSection with a single solid color",
       "acceptanceCriteria": [
-        "When visiting https://funny-pink-4yi-draft.caffeine.xyz/ and fatimachowdhury.com is reachable, the browser navigates to https://fatimachowdhury.com/ (the address bar shows fatimachowdhury.com).",
-        "A previously cached \"canonicalDomainReachable=false\" value must not prevent redirecting forever; the app must re-check reachability after a reasonable amount of time or on subsequent loads so redirect can start working once the domain becomes reachable.",
-        "If fatimachowdhury.com is not reachable/configured, the site remains accessible on the draft domain (no hard-failure redirect loop or blank page).",
-        "If the URL contains a #caffeineAdminToken=... fragment, the fragment is removed (either during redirect to fatimachowdhury.com or, when staying on the draft domain, via history replace) so it is not left in the address bar."
+        "The name text displays in a single solid color instead of a gradient",
+        "The color maintains sufficient contrast for readability",
+        "Only the selected span element is modified"
       ],
       "file_operations": [
         {
-          "path": "frontend/index.html",
+          "path": "frontend/src/components/sections/HeroSection.tsx",
           "operation": "modify",
-          "description": "Update the draft-domain redirect logic to (1) add a timestamped reachability cache with a short TTL for cached unreachable results (so a prior canonicalDomainReachable=false does not persist for the whole tab session), (2) re-run the reachability check on subsequent loads once the TTL expires, (3) preserve normal navigation by staying on the draft domain when the canonical domain remains unreachable (no redirect loop), and (4) ensure any URL hash containing caffeineAdminToken is removed via redirect (canonical) or history.replaceState (draft) without leaving it in the address bar."
+          "description": "Remove the gradient text styling classes from the second span element containing the name and replace with a solid color class. Update the className to use a warm, readable color with good contrast against the background (e.g., text-[oklch(0.65_0.2_40)] or similar warm tone from the existing color system)."
         }
       ]
     }

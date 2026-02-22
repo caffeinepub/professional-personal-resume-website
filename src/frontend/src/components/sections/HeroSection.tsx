@@ -18,10 +18,10 @@ export function HeroSection() {
       </div>
 
       <div className="max-w-3xl mx-auto w-full">
-        <div className="space-y-6 animate-fade-in flex flex-col items-center text-center">
+        <div className="space-y-6 flex flex-col items-center text-center">
           <h1 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl leading-tight">
             <span className="block text-foreground">Hi, I'm...</span>
-            <span className="block gradient-text">{resumeData.name}</span>
+            <span className="block text-accent">{resumeData.name}</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground font-medium">

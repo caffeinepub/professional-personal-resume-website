@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-redirect-logic-in-frontend-index-html-so-that-opening-the-site-on-the-caffeine-draft-domain-e-g-https-funny-pink-4yi-draft-caffeine-xyz-reliably-redirects-to-https-fatimachowdhury-com-whenever-the-canonical-domain-is-reachable-even-if-a-previous-reachability-check-in-the-same-browser-tab-session-had-cached-the-canonical-domain-as-unreachable",
-      "featureTitle": "Update the redirect logic in frontend/index.html so that opening the site on the Caffeine draft domain (e.g., https://funny-pink-4yi-draft.caffeine.xyz/) reliably redirects to https://fatimachowdhury.com/ whenever the canonical domain is reachable, even if a previous reachability check in the same browser tab/session had cached the canonical domain as unreachable.",
+      "featureId": "feature-remove-the-gradient-styling-from-the-name-text-in-herosection-and-replace-it-with-a-single-solid-color-the-element-to-modify-is-the-second-span-within-the-h1-tag-xpath-html-1-body-1-div-1-div-1-main-1-section-1-div-2-div-1-h1-1-span-2-use-a-warm-readable-color-that-maintains-good-contrast-against-the-background",
+      "featureTitle": "Remove the gradient styling from the name text in HeroSection and replace it with a single solid color. The element to modify is the second span within the h1 tag (XPath: /html[1]/body[1]/div[1]/div[1]/main[1]/section[1]/div[2]/div[1]/h1[1]/span[2]). Use a warm, readable color that maintains good contrast against the background.",
       "files": [
-        "frontend/index.html"
+        "frontend/src/components/sections/HeroSection.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,7 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-27"
+        "REQ-1"
       ],
       "confidence": "high"
     }
