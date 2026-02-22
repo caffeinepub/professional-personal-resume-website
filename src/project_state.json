@@ -1,12 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 15,
+  "projectStateVersion": 35,
   "summary": "Create a professional personal resume website to showcase experience, skills, and contact information.",
-  "architectural_notes": [],
+  "architectural_notes": [
+    "Hero/Intro: render the greeting headline as one line; style the \"Hi, I'm\" text in black (explicit color override if needed to match theme).",
+    "Hero/Intro headline: render \"Hi, I'm...\" as the first line in black text; render the name \"Fatima Chowdhury\" on a second line below."
+  ],
   "known_issues": [
     "Footer still displays the text \"using caffeine.ai\" despite attempted removal; user reports the change did not take effect.",
     "Deployment/build failed during deployment; website is not running.",
-    "Hero/Intro section layout is not centered in the middle of the page as requested (should match the centering of the \"About Me\" section), and the greeting text \"Hi, I'm ...\" is not displayed as desired."
+    "Hero/Intro section layout is not centered in the middle of the page as requested (should match the centering of the \"About Me\" section), and the greeting text \"Hi, I'm ...\" is not displayed as desired.",
+    "Custom domain setup not applied: site still shows/uses the caffeine.xyz draft URL instead of fatimachowdhury.com.",
+    "User reports the website is not opening/accessible right now."
   ],
   "isFixRequest": true,
   "existing_features": [
@@ -129,6 +134,94 @@
         "REQ-15"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-only-the-hero-headline-span-at-xpath-html-1-body-1-div-1-div-1-main-1-section-1-div-2-div-1-h1-1-span-1-so-the-greeting-renders-as-a-single-unbroken-line-and-the-substring-hi-i-m-is-styled-in-black-text-while-keeping-the-name-immediately-following-it-on-the-same-line",
+      "title": "Update ONLY the Hero headline span at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/section[1]/div[2]/div[1]/h1[1]/span[1] so the greeting renders as a single unbroken line and the substring \"Hi, I'm\" is styled in black text while keeping the name immediately following it on the same line.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-only-the-element-at-xpath-html-1-body-1-div-1-div-1-main-1-section-5-div-2-div-1-the-skills-section-content-grid-container-to-render-two-side-by-side-columns-where-the-left-column-contains-the-first-4-skill-category-blocks-and-the-right-column-contains-the-remaining-3-skill-category-blocks-while-keeping-the-existing-visual-styling-of-each-skill-category-block-unchanged",
+      "title": "Update ONLY the element at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/section[5]/div[2]/div[1] (the Skills section content grid container) to render two side-by-side columns where the left column contains the first 4 skill-category blocks and the right column contains the remaining 3 skill-category blocks, while keeping the existing visual styling of each skill-category block unchanged.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-skills-section-ui-so-the-single-skill-category-technical-professional-skills-no-longer-renders-as-one-large-card-containing-all-7-skill-pills-instead-render-two-separate-white-cards-side-by-side-on-md-screens-where-the-left-card-contains-exactly-these-4-items-in-this-order-microsoft-excel-spreadsheets-microsoft-office-suite-basic-sql-coursework-exposure-data-organization-and-accuracy-and-the-right-card-contains-the-remaining-3-skill-items-problem-solving-critical-thinking-teamwork-and-communication-computer-proficiency-using-the-same-pill-styling-currently-used-for-each-skill",
+      "title": "Update the Skills section UI so the single skill category \"Technical & Professional Skills\" no longer renders as one large card containing all 7 skill pills; instead render two separate white cards side-by-side (on md+ screens) where the left card contains exactly these 4 items in this order: \"Microsoft Excel & Spreadsheets\", \"Microsoft Office Suite\", \"Basic SQL (coursework exposure)\", \"Data organization and accuracy\"; and the right card contains the remaining 3 skill items (\"Problem solving & critical thinking\", \"Teamwork and communication\", \"Computer proficiency\") using the same pill styling currently used for each skill.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-single-category-skillssection-layout-the-special-case-when-there-is-exactly-1-skill-category-with-4-skills-so-it-renders-as-one-large-rectangular-card-container-with-the-text-technical-professional-skills-centered-in-the-middle-of-that-rectangle-and-with-the-skill-pills-split-into-two-subsections-at-the-bottom-of-the-same-rectangle-left-subsection-contains-the-4-specified-skills-in-order-right-subsection-contains-the-remaining-skills",
+      "title": "Update the single-category SkillsSection layout (the special case when there is exactly 1 skill category with >4 skills) so it renders as ONE large rectangular card/container, with the text \"Technical & Professional Skills\" centered in the middle of that rectangle, and with the skill pills split into TWO subsections at the bottom of the same rectangle (left subsection contains the 4 specified skills in order; right subsection contains the remaining skills).",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-only-the-hero-section-content-container-at-xpath-html-1-body-1-div-1-div-1-main-1-section-1-div-2-div-1-so-the-headline-renders-on-two-lines-the-first-line-reads-exactly-hi-i-m-and-is-styled-in-black-text-and-the-second-line-reads-exactly-fatima-chowdhury",
+      "title": "Update ONLY the Hero section content container at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/section[1]/div[2]/div[1] so the headline renders on two lines: the first line reads exactly \"Hi, I'm...\" and is styled in black text, and the second line reads exactly \"Fatima Chowdhury\".",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-configure-the-deployed-resume-website-to-use-the-custom-domain-fatimachowdhury-com-set-up-and-point-the-domain-so-fatimachowdhury-com-serves-the-live-site",
+      "title": "Configure the deployed resume website to use the custom domain fatimachowdhury.com (set up and point the domain so fatimachowdhury.com serves the live site).",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-frontend-so-that-when-the-site-is-opened-on-the-caffeine-draft-domain-e-g-funny-pink-4yi-draft-caffeine-xyz-it-automatically-redirects-to-https-fatimachowdhury-com-and-removes-the-caffeineadmintoken-fragment-from-the-url-during-the-redirect",
+      "title": "Update the frontend so that when the site is opened on the Caffeine draft domain (e.g., funny-pink-4yi-draft.caffeine.xyz), it automatically redirects to https://fatimachowdhury.com/ and removes the #caffeineAdminToken=... fragment from the URL during the redirect.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-verify-and-fix-the-deployment-custom-domain-configuration-so-that-fatimachowdhury-com-serves-the-live-resume-site-directly-not-only-via-a-redirect-and-visiting-fatimachowdhury-com-shows-the-same-content-as-the-current-draft-deployment",
+      "title": "Verify and fix the deployment/custom-domain configuration so that fatimachowdhury.com serves the live resume site directly (not only via a redirect), and visiting fatimachowdhury.com shows the same content as the current draft deployment.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-restore-site-availability-so-the-resume-website-successfully-loads-in-the-browser-no-blank-page-unreachable-deployment-and-the-deployment-completes-without-errors",
+      "title": "Restore site availability so the resume website successfully loads in the browser (no blank page / unreachable deployment) and the deployment completes without errors.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-domain-redirect-logic-in-frontend-index-html-so-it-does-not-make-the-site-inaccessible-when-the-custom-domain-fatimachowdhury-com-is-not-yet-reachable-configured-avoid-hard-failing-access-by-redirecting-users-away-from-a-working-draft-url",
+      "title": "Update the domain-redirect logic in frontend/index.html so it does not make the site inaccessible when the custom domain fatimachowdhury.com is not yet reachable/configured (avoid hard-failing access by redirecting users away from a working draft URL).",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-redirect-logic-in-frontend-index-html-so-that-opening-the-site-on-the-caffeine-draft-domain-e-g-https-funny-pink-4yi-draft-caffeine-xyz-reliably-redirects-to-https-fatimachowdhury-com-whenever-the-canonical-domain-is-reachable-even-if-a-previous-reachability-check-in-the-same-browser-tab-session-had-cached-the-canonical-domain-as-unreachable",
+      "title": "Update the redirect logic in frontend/index.html so that opening the site on the Caffeine draft domain (e.g., https://funny-pink-4yi-draft.caffeine.xyz/) reliably redirects to https://fatimachowdhury.com/ whenever the canonical domain is reachable, even if a previous reachability check in the same browser tab/session had cached the canonical domain as unreachable.",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -159,6 +252,50 @@
     {
       "id": "AR-5",
       "summary": "Update the Hero/Intro section so it is centered in the middle of the page like the \"About Me\" section, and ensure the greeting text \"Hi, I'm ...\" remains visible in the Hero.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Update the Hero headline so the greeting text \"Hi, I'm ...\" appears as a single line of text, and ensure the \"Hi, I'm\" portion is styled in black.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Divide the relevant content into two side-by-side sections/columns, with 4 points on one side and 3 points on the other.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Update ONLY the element at XPath /html[1]/body[1]/div[1]/div[1]/main[1]/section[5]/div[2]/div[1]/div[1]/div[1] so the content is divided into two side-by-side sections/columns, with the first 4 points/items rendered in the left column and the remaining 3 points/items rendered in the right column, while keeping the existing visual styling of each item unchanged.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Update the Skills section to render two separate white squares/cards (two columns): left card contains these 4 items (Microsoft Excel & Spreadsheets; Microsoft Office Suite; Basic SQL (coursework exposure); Data organization and accuracy) and the remaining 3 skill items appear in the right card, instead of one large square containing all 7 items.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Revise the Skills section layout to be one large rectangle/card with the text \"Technical & Professional Skills\" centered in the middle, and the two skill item sections rendered at the bottom (two subsections/columns) within the same rectangle.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Update the Hero/Intro headline layout so the first line reads \"Hi, I'm...\" in black text, and the second line shows the name \"Fatima Chowdhury\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Configure and point the website to the custom domain fatimachowdhury.com (custom domain setup).",
       "reqIds": [],
       "status": "pending"
     }

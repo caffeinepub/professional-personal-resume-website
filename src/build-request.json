@@ -1,38 +1,48 @@
 {
   "kind": "build_request",
-  "title": "Center Hero content like About section and restore “Hi, I’m …” greeting",
-  "priority": "normal",
+  "title": "Fix draft-domain redirect so the site consistently uses fatimachowdhury.com when reachable",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-15",
-      "text": "Update the Hero/Intro section layout so its text content is centered in the middle of the page (visually centered like the “About Me” section), and ensure the Hero headline explicitly includes the greeting text “Hi, I’m …” (e.g., “Hi, I’m {resumeData.name}”) while keeping the rest of the Hero content (\"Computer Science\" line and the “Get in Touch” / “Learn More” buttons) present and centered below the headline.",
+      "id": "REQ-27",
+      "text": "Update the redirect logic in frontend/index.html so that opening the site on the Caffeine draft domain (e.g., https://funny-pink-4yi-draft.caffeine.xyz/) reliably redirects to https://fatimachowdhury.com/ whenever the canonical domain is reachable, even if a previous reachability check in the same browser tab/session had cached the canonical domain as unreachable.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "noo i said i want it in the middle of the website and i srtill want it to say Hi, I'm  ... i want it in the middle like how the \"About Me\" is in the middle opf the website"
+          "it still says this: https://funny-pink-4yi-draft.caffeine.xyz/"
         ]
       },
       "acceptanceCriteria": [
-        "On desktop and mobile, the Hero text block is horizontally centered and visually aligned to the same centered content width style used by the “About Me” section (not left-aligned or stuck at the top).",
-        "The primary Hero headline renders the literal greeting text \"Hi, I'm\" followed by the user’s name (from resumeData), in one centered headline line (wrapping naturally on small screens if needed).",
-        "The \"Computer Science\" line remains centered and is rendered directly below the greeting headline.",
-        "The “Get in Touch” and “Learn More” buttons remain visible and centered below the \"Computer Science\" line, and still scroll to the Contact and About sections respectively."
+        "When visiting https://funny-pink-4yi-draft.caffeine.xyz/ and fatimachowdhury.com is reachable, the browser navigates to https://fatimachowdhury.com/ (the address bar shows fatimachowdhury.com).",
+        "A previously cached \"canonicalDomainReachable=false\" value must not prevent redirecting forever; the app must re-check reachability after a reasonable amount of time or on subsequent loads so redirect can start working once the domain becomes reachable.",
+        "If fatimachowdhury.com is not reachable/configured, the site remains accessible on the draft domain (no hard-failure redirect loop or blank page).",
+        "If the URL contains a #caffeineAdminToken=... fragment, the fragment is removed (either during redirect to fatimachowdhury.com or, when staying on the draft domain, via history replace) so it is not left in the address bar."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
-    "Keep the backend as a single Motoko actor; no new backend services."
+    "Do not edit files under frontend/src/components/ui or any other paths listed in frontend.immutablePaths.",
+    "Keep all user-facing text in English."
   ],
   "nonGoals": [
-    "Do not add new sections or change resume content fields in frontend/src/resumeData.ts as part of this request.",
-    "Do not introduce new authentication, backend methods, or persistence changes."
+    "Changing resume content, section layouts, or styling unrelated to domain/redirect behavior.",
+    "Adding backend changes; this issue should be addressed in frontend/index.html redirect behavior only."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

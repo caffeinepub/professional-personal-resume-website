@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Center the Hero/Intro content like the “About Me” section and restore the “Hi, I’m …” greeting in the Hero headline.
+**Goal:** Fix draft-domain redirect behavior so the site consistently uses fatimachowdhury.com when it is reachable, without getting stuck due to a previously cached “unreachable” result.
 
 **Planned changes:**
-- Update the Hero/Intro section layout so the text block is horizontally centered and uses the same centered content width/alignment style as the “About Me” section on desktop and mobile.
-- Adjust the Hero headline to explicitly include the greeting text `Hi, I'm {resumeData.name}` as the primary centered headline (wrapping naturally on small screens).
-- Keep the “Computer Science” line and the “Get in Touch” / “Learn More” buttons present, centered, and stacked below the greeting headline, preserving their scroll-to-section behavior.
+- Update redirect logic in `frontend/index.html` to re-check canonical domain reachability on subsequent loads (or after a reasonable time) so a stale cached `canonicalDomainReachable=false` does not block redirect indefinitely.
+- Ensure that when `fatimachowdhury.com` is reachable, visiting the Caffeine draft domain navigates to `https://fatimachowdhury.com/` (address bar reflects the canonical domain).
+- Ensure that when `fatimachowdhury.com` is not reachable/configured, the site stays accessible on the draft domain without redirect loops or blank-page failures.
+- Strip any `#caffeineAdminToken=...` fragment from the URL (during redirect or via history replace when remaining on the draft domain).
 
-**User-visible outcome:** The homepage Hero content appears centered in the middle of the page (matching the “About Me” centered layout) and shows “Hi, I’m …” with the user’s name, with the subtitle and buttons centered beneath it.
+**User-visible outcome:** Opening the site on the Caffeine draft domain redirects to fatimachowdhury.com whenever it’s reachable, and the page remains usable on the draft domain when it isn’t; any `#caffeineAdminToken=...` fragment is removed from the address bar.

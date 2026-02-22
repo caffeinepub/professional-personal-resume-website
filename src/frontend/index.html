@@ -4,9 +4,131 @@
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <title>Professional Resume - Your Name</title>
         <link rel='icon' type='image/png' href='/assets/generated/favicon.dim_64x64.png' />
+        <link rel='canonical' href='https://fatimachowdhury.com/' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
         <link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap' rel='stylesheet' />
+        <script>
+            (function() {
+                var host = window.location.hostname;
+                var protocol = window.location.protocol;
+                var path = window.location.pathname;
+                var search = window.location.search;
+                var hash = window.location.hash;
+                var canonicalHost = 'fatimachowdhury.com';
+                var canonicalProtocol = 'https:';
+                
+                // Check if we're on the canonical domain
+                var isCanonicalDomain = host === canonicalHost;
+                
+                // Redirect from Caffeine draft domains to canonical domain (with reachability check)
+                if (host.endsWith('caffeine.xyz')) {
+                    // Check if we've already verified the canonical domain is reachable
+                    var cachedData = sessionStorage.getItem('canonicalDomainReachable');
+                    var now = Date.now();
+                    var cacheTTL = 5 * 60 * 1000; // 5 minutes in milliseconds
+                    
+                    if (cachedData) {
+                        try {
+                            var parsed = JSON.parse(cachedData);
+                            var isExpired = (now - parsed.timestamp) > cacheTTL;
+                            
+                            if (!isExpired) {
+                                if (parsed.reachable === true) {
+                                    // We know it's reachable, redirect immediately
+                                    window.location.replace(canonicalProtocol + '//' + canonicalHost + path + search);
+                                    return;
+                                } else if (parsed.reachable === false) {
+                                    // We know it's not reachable (and cache is still valid), stay on draft domain
+                                    // Clean up hash if needed
+                                    if (hash && hash.indexOf('caffeineAdminToken') !== -1) {
+                                        if (window.history && window.history.replaceState) {
+                                            window.history.replaceState(null, '', window.location.pathname + search);
+                                        }
+                                    }
+                                    return;
+                                }
+                            }
+                            // If expired, fall through to recheck
+                        } catch (e) {
+                            // Invalid cached data, fall through to recheck
+                        }
+                    }
+                    
+                    // Not cached or expired, check reachability with a short timeout
+                    var img = new Image();
+                    var timeout;
+                    var redirected = false;
+                    
+                    img.onload = function() {
+                        clearTimeout(timeout);
+                        if (!redirected) {
+                            sessionStorage.setItem('canonicalDomainReachable', JSON.stringify({
+                                reachable: true,
+                                timestamp: Date.now()
+                            }));
+                            window.location.replace(canonicalProtocol + '//' + canonicalHost + path + search);
+                            redirected = true;
+                        }
+                    };
+                    
+                    img.onerror = function() {
+                        clearTimeout(timeout);
+                        if (!redirected) {
+                            sessionStorage.setItem('canonicalDomainReachable', JSON.stringify({
+                                reachable: false,
+                                timestamp: Date.now()
+                            }));
+                            // Stay on draft domain, clean up hash if needed
+                            if (hash && hash.indexOf('caffeineAdminToken') !== -1) {
+                                if (window.history && window.history.replaceState) {
+                                    window.history.replaceState(null, '', window.location.pathname + search);
+                                }
+                            }
+                        }
+                    };
+                    
+                    // Set a short timeout (1 second) to avoid blocking page load
+                    timeout = setTimeout(function() {
+                        if (!redirected) {
+                            sessionStorage.setItem('canonicalDomainReachable', JSON.stringify({
+                                reachable: false,
+                                timestamp: Date.now()
+                            }));
+                            // Stay on draft domain, clean up hash if needed
+                            if (hash && hash.indexOf('caffeineAdminToken') !== -1) {
+                                if (window.history && window.history.replaceState) {
+                                    window.history.replaceState(null, '', window.location.pathname + search);
+                                }
+                            }
+                        }
+                    }, 1000);
+                    
+                    // Try to load favicon from canonical domain as a reachability test
+                    img.src = canonicalProtocol + '//' + canonicalHost + '/assets/generated/favicon.dim_64x64.png?t=' + Date.now();
+                    return;
+                }
+                
+                // Redirect www to non-www (only on canonical domain)
+                if (host === 'www.' + canonicalHost) {
+                    window.location.replace(canonicalProtocol + '//' + canonicalHost + path + search + hash);
+                    return;
+                }
+                
+                // Redirect http to https (only on canonical domain)
+                if (protocol === 'http:' && host === canonicalHost) {
+                    window.location.replace(canonicalProtocol + '//' + canonicalHost + path + search + hash);
+                    return;
+                }
+                
+                // Safety cleanup: remove any hash containing caffeineAdminToken on canonical domain
+                if (isCanonicalDomain && hash && hash.indexOf('caffeineAdminToken') !== -1) {
+                    if (window.history && window.history.replaceState) {
+                        window.history.replaceState(null, '', window.location.pathname + search);
+                    }
+                }
+            })();
+        </script>
     </head>
     <body>
         <div id='root'></div>

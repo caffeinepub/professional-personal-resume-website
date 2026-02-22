@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-hero-intro-section-layout-so-its-text-content-is-centered-in-the-middle-of-the-page-visually-centered-like-the-about-me-section-and-ensure-the-hero-headline-explicitly-includes-the-greeting-text-hi-i-m-e-g-hi-i-m-resumedata-name-while-keeping-the-rest-of-the-hero-content-computer-science-line-and-the-get-in-touch-learn-more-buttons-present-and-centered-below-the-headline",
-      "featureTitle": "Update the Hero/Intro section layout so its text content is centered in the middle of the page (visually centered like the “About Me” section), and ensure the Hero headline explicitly includes the greeting text “Hi, I’m …” (e.g., “Hi, I’m {resumeData.name}”) while keeping the rest of the Hero content (\"Computer Science\" line and the “Get in Touch” / “Learn More” buttons) present and centered below the headline.",
+      "featureId": "feature-update-the-redirect-logic-in-frontend-index-html-so-that-opening-the-site-on-the-caffeine-draft-domain-e-g-https-funny-pink-4yi-draft-caffeine-xyz-reliably-redirects-to-https-fatimachowdhury-com-whenever-the-canonical-domain-is-reachable-even-if-a-previous-reachability-check-in-the-same-browser-tab-session-had-cached-the-canonical-domain-as-unreachable",
+      "featureTitle": "Update the redirect logic in frontend/index.html so that opening the site on the Caffeine draft domain (e.g., https://funny-pink-4yi-draft.caffeine.xyz/) reliably redirects to https://fatimachowdhury.com/ whenever the canonical domain is reachable, even if a previous reachability check in the same browser tab/session had cached the canonical domain as unreachable.",
       "files": [
-        "frontend/src/components/sections/HeroSection.tsx"
+        "frontend/index.html"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,7 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-15"
+        "REQ-27"
       ],
       "confidence": "high"
     }

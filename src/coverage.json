@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T21:28:58.260Z",
+  "generatedAt": "2026-02-05T22:28:12.765Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,14 +11,14 @@
     "implemented": 1,
     "items": [
       {
-        "id": "REQ-15",
-        "summary": "Update the Hero/Intro section layout so its text content is centered in the middle of the page (visually centered like the “About Me” section), and ensure the Hero headline explicitly includes the greeting text “Hi, I’m …” (e.g., “Hi, I’m {resumeData.name}”) while keeping the rest of the Hero content (\"Computer Science\" line and the “Get in Touch” / “Learn More” buttons) present and centered below the headline.",
+        "id": "REQ-27",
+        "summary": "Update the redirect logic in frontend/index.html so that opening the site on the Caffeine draft domain (e.g., https://funny-pink-4yi-draft.caffeine.xyz/) reliably redirects to https://fatimachowdhury.com/ whenever the canonical domain is reachable, even if a previous reachability check in the same browser tab/session had cached the canonical domain as unreachable.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/sections/HeroSection.tsx"
+          "frontend/index.html"
         ],
         "matchedFiles": [
-          "frontend/src/components/sections/HeroSection.tsx"
+          "frontend/index.html"
         ]
       }
     ]
@@ -28,7 +28,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/sections/HeroSection.tsx",
+    "frontend/index.html",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

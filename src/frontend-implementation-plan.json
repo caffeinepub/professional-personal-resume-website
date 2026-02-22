@@ -1,22 +1,22 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Center Hero intro content and restore “Hi, I’m …” greeting",
+  "title": "Fix draft-domain redirect caching so canonical domain redirect recovers when reachable",
   "requirements": [
     {
-      "id": "REQ-15",
-      "summary": "Center the Hero/Intro text block to match the About section’s centered content width and restore the “Hi, I’m {name}” greeting while keeping the subtitle and buttons centered and functional.",
+      "id": "REQ-27",
+      "summary": "Adjust frontend/index.html draft→canonical redirect script to avoid permanently caching canonical-domain unreachability, while preserving accessibility on the draft domain and removing any #caffeineAdminToken fragment.",
       "acceptanceCriteria": [
-        "On desktop and mobile, the Hero text block is horizontally centered and visually aligned to the same centered content width style used by the “About Me” section (not left-aligned or stuck at the top).",
-        "The primary Hero headline renders the literal greeting text \"Hi, I'm\" followed by the user’s name (from resumeData), in one centered headline line (wrapping naturally on small screens if needed).",
-        "The \"Computer Science\" line remains centered and is rendered directly below the greeting headline.",
-        "The “Get in Touch” and “Learn More” buttons remain visible and centered below the \"Computer Science\" line, and still scroll to the Contact and About sections respectively."
+        "When visiting https://funny-pink-4yi-draft.caffeine.xyz/ and fatimachowdhury.com is reachable, the browser navigates to https://fatimachowdhury.com/ (the address bar shows fatimachowdhury.com).",
+        "A previously cached \"canonicalDomainReachable=false\" value must not prevent redirecting forever; the app must re-check reachability after a reasonable amount of time or on subsequent loads so redirect can start working once the domain becomes reachable.",
+        "If fatimachowdhury.com is not reachable/configured, the site remains accessible on the draft domain (no hard-failure redirect loop or blank page).",
+        "If the URL contains a #caffeineAdminToken=... fragment, the fragment is removed (either during redirect to fatimachowdhury.com or, when staying on the draft domain, via history replace) so it is not left in the address bar."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/sections/HeroSection.tsx",
+          "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Adjust Hero layout to use a centered, About-like content width (e.g., max-w-3xl + mx-auto), remove unnecessary grid structure that can affect centering, and ensure the main headline text explicitly includes “Hi, I’m {resumeData.name}” while keeping the “Computer Science” line and both CTA buttons centered and maintaining their smooth-scroll behavior to #contact and #about."
+          "description": "Update the draft-domain redirect logic to (1) add a timestamped reachability cache with a short TTL for cached unreachable results (so a prior canonicalDomainReachable=false does not persist for the whole tab session), (2) re-run the reachability check on subsequent loads once the TTL expires, (3) preserve normal navigation by staying on the draft domain when the canonical domain remains unreachable (no redirect loop), and (4) ensure any URL hash containing caffeineAdminToken is removed via redirect (canonical) or history.replaceState (draft) without leaving it in the address bar."
         }
       ]
     }
